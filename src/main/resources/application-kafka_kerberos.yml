@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    include: kafka
+  kafka:
+    jaas:
+      login-module:  "com.sun.security.auth.module.Krb5LoginModule"
+      enabled: true
+    properties:
+      security.protocol: "SASL_PLAINTEXT"
+      ssl:
+        protocol: "SASL_PLAINTEXT"
+      sasl:
+        mechanism: "GSSAPI"
+        kerberos:
+          service:
+            name: "kafka"
+        jaas:
+            config: "com.sun.security.auth.module.Krb5LoginModule required debug=true useKeyTab=true storeKey=true useTicketCache=false keyTab=\"${KAFKA_KERBEROS_KEYTAB}\" principal=\"${KAFKA_KERBEROS_USERNAME}\";"
+
+

@@ -1,0 +1,17 @@
+spring:
+  kafka:
+    bootstrap-servers: "${KAFKA_SERVERS}"
+    consumer:
+      group-id: ${KAFKA_GROUP_ID}
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+      value-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+    producer:
+      value-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+kafka:
+  topic: ${KAFKA_TOPIC}
+  group-id: "group_data_science"
+  auto-start: true
+  sender-enable: true
